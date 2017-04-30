@@ -8,6 +8,7 @@ var ctrlUsers = require('../controllers/users');
 var ctrlBadges = require('../controllers/badge');
 var ctrlBooks = require('../controllers/books');
 var ctrlKids = require('../controllers/kids');
+var ctrlQuestions = require('../controllers/questions');
 
 
 
@@ -19,6 +20,7 @@ router.get('/users', ctrlUsers.getAllUsers );
 router.put('/users/update/:userid', ctrlUsers.updateUser);
 router.put('/users/:userid/badges/:badgeid', ctrlUsers.addBadge);
 router.get('/users/:userid/badges', ctrlUsers.getBadges);
+
 
 // badges
 router.post('/badges', ctrlBadges.addBadge);
@@ -42,5 +44,6 @@ router.get('/kids/:kidid', ctrlKids.getOneKid);
 router.put('/kids/:kidid', ctrlKids.updateKid);
 router.delete('/kids/:kidid', ctrlKids.removeKid);
 
-
+//questions
+router.post('/questions/:userid/:bookid', ctrlQuestions.addQuestion);
 module.exports = router;

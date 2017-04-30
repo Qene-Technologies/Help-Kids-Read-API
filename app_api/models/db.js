@@ -51,3 +51,4 @@ require('./users');
 require('./badges');
 require('./books');
 require('./kids');
+require('./questions');

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var user = mongoose.model('User');
 var Badge = mongoose.model('Badge');
+var Question = mongoose.model('Question');
 
 var sendJSONresponse = function(res, status, content) {
   res.status(status);
@@ -183,6 +184,8 @@ addBooks = (req, res) =>{
 getBooks = (req, res) => {
 
 }
+
+
 module.exports = {
     getUser,
     getAllUsers,

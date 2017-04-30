@@ -14,6 +14,12 @@ var booksSchema = mongoose.Schema({
     },
     published : {
         type : String
+    },
+    image : {
+        type : String
+    },
+    reading_level : {
+        
     }
 });
 

@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 
-var questionSchema = mongoose.model({
+var questionSchema = mongoose.Schema({
+    book_title : {
+        type : String,
+        required : true
+    },
     question : {
         type : String,
         required : true
@@ -10,11 +14,23 @@ var questionSchema = mongoose.model({
         required : true
     },
     difficulty_level : {
-        type : number,
+        type : Number,
         required : true,
         min : 1,
         max : 3
+    },
+    votes : [
+        {
+            userid : String
+        }
+    ],
+    added_by : {
+        userid : String
+    }, 
+    total_votes :{
+        type : Number,
+        default : 0
     }
 });
 
-mongoose.model('question', questionSchema);
+mongoose.model('Question', questionSchema);
