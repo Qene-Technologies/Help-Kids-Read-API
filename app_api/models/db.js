@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/hackaton';
+var dbURI = 'mongodb://henokzion:papiyo143@ds125481.mlab.com:25481/helpkids';
 if (process.env.NODE_ENV === 'production') {
-    dbURI = process.env.MONGOLAB_URI;
+    dbURI = 'mongodb://henokzion:papiyo143@ds125481.mlab.com:25481/helpkids';
 }
 
 mongoose.connect(dbURI);
