@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://henokzion:papiyo143@ds125481.mlab.com:25481/helpkids';
+var dbURI = 'mongodb://localhost/hackaton';
 if (process.env.NODE_ENV === 'production') {
     dbURI = 'mongodb://henokzion:papiyo143@ds125481.mlab.com:25481/helpkids';
 }
