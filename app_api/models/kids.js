@@ -13,7 +13,18 @@ var booksSchema = mongoose.Schema({
     published : {
         type : String
     }
-})
+});
+var badgesSchema = new mongoose.Schema({
+    name: {
+        type: String
+    },
+    point: {
+        type: Number,
+        min: 0,
+        max: 100
+    },
+    description: {type: String},
+});
 
 var kidsSchema = mongoose.Schema({
     name : {
@@ -29,7 +40,8 @@ var kidsSchema = mongoose.Schema({
     grade : {
         type : Number
     },
-    books_read :[booksSchema]
+    books_read :[booksSchema], 
+    badges_collected : [badgesSchema],
 });
 
 mongoose.model('Kids', kidsSchema);
