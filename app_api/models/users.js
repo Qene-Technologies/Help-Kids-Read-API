@@ -17,7 +17,23 @@ var questionSchema = new mongoose.Schema({
     question: String,
     answer: String
 });
+var booksSchema = new mongoose.Schema({
+  title : {
+        type:  String,
+        required : true,
+        unique : true
+    },
+    author : {
+        name : {type : String, required : true },
+    },
+    description : {
+        type : String
+    },
+    published : {
+        type : String
+    },
 
+})
 var userSchema = new mongoose.Schema({
   phone: {
     type: String,
@@ -37,7 +53,8 @@ var userSchema = new mongoose.Schema({
     name: String,
     image: String,
   }],
-  questions_added:[questionSchema]
+  questions_added:[questionSchema],
+  books_added : [booksSchema]
 });
 
 userSchema.methods.setPassword = function(password){

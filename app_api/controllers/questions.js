@@ -67,6 +67,10 @@ getAllQuestions = (req, res) => {
         });
 }
 
+getQuestionsByBook = (req, res) =>{
+
+}
+
 getOneQuestion = (req, res) => {
     if(req.params && req.params.questionid){
         Question
@@ -146,5 +150,6 @@ module.exports = {
     getAllQuestions,
     getOneQuestion,
     updateQuestion,
-    removeQuestion
+    removeQuestion,
+    getQuestionsByBook
 }

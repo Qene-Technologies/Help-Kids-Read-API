@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Book = mongoose.model('Book');
+var User = mongoose.model('User');
 
 var sendJSONresponse = function(res, status, content) {
   res.status(status);
@@ -8,21 +9,42 @@ var sendJSONresponse = function(res, status, content) {
 
 
 addBook = (req, res)=> {
-    console.log(req.body);
-     Book.create({
-            title: req.body.title,
-            description: req.body.description,
-            author :{name : req.body.author} ,
-            published : "this will change later"
-        }, function(err, Book) {
-            if (err) {
-                console.log(err);
-                sendJSONresponse(res, 400, err);
-            } else {
-            console.log(Book);
-            sendJSONresponse(res, 201, Book);
-            }
-        });
+    if(req.params && req.params.userid){
+        User.findById(req.params.userid)
+            .exec((err, user)=>{
+                if(err){
+                    console.log("user not found");
+                    sendJSONresponse(res, 404, err);
+                    return;
+                }
+                Book.create({
+                    title: req.body.title,
+                    description: req.body.description,
+                    author :{name : req.body.author} ,
+                    published : "this will change later",
+                    reading_level : parseInt(req.body.reading_level),
+                    added_by :{
+                        userid : user._id
+                    }
+                }, function(err, Book) {
+                    if (err) {
+                        console.log(err);
+                        sendJSONresponse(res, 400, err);
+                    } else {
+                        console.log(Book);
+                        user.books_added.push(Book);
+                        user.save((err, result)=>{
+                            if(err){
+                                sendJSONresponse(res, 400, err);
+                                return;
+                            }
+                            sendJSONresponse(res, 201, Book);
+                        });
+                    }
+                });
+            });
+    }
+     
 }
 
 getAllBooks = (req, res) => {

@@ -31,7 +31,7 @@ router.delete('/badges/:badgeid', ctrlBadges.removeBadge);
 
 
 // books
-router.post('/books', ctrlBooks.addBook);
+router.post('/books/:userid', ctrlBooks.addBook);
 router.get('/books', ctrlBooks.getAllBooks);
 router.get('/books/:bookid', ctrlBooks.getOneBook);
 router.put('/books/:bookid', ctrlBooks.updateBook);
@@ -46,4 +46,6 @@ router.delete('/kids/:kidid', ctrlKids.removeKid);
 
 //questions
 router.post('/questions/:userid/:bookid', ctrlQuestions.addQuestion);
+router.get('/questions', ctrlQuestions.getAllQuestions);
+router.get('/questions/:bookid',ctrlQuestions.getQuestionsByBook);
 module.exports = router;

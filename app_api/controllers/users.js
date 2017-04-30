@@ -175,15 +175,6 @@ getKids = (req, res) => {
 
 }
 
-// Add books to the persons acount
-addBooks = (req, res) =>{
-
-}
-
-// get books added by a specific user
-getBooks = (req, res) => {
-
-}
 
 
 module.exports = {

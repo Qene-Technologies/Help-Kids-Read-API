@@ -19,7 +19,11 @@ var booksSchema = mongoose.Schema({
         type : String
     },
     reading_level : {
-        
+        type:  Number,
+        required : true
+    },
+    added_by : {
+        userid : String
     }
 });
 
