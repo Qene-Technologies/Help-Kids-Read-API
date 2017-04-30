@@ -12,11 +12,11 @@ addBadge = (req, res)=> {
      Badge.create({
             name: req.body.name,
             description: req.body.description,
-            point: parseFloat(req.body.point)
+            point: parseInt(req.body.point)
         }, function(err, badge) {
             if (err) {
                 console.log(err);
-                sendJSONresponse(res, 400, err);
+                sendJSONresponse(res, 400, typeof req.body.point);
             } else {
             console.log(badge);
             sendJSONresponse(res, 201, badge);

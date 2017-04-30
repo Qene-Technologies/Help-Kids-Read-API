@@ -10,7 +10,7 @@ var badgesSchema = new mongoose.Schema({
         type: Number,
         required: true,
         min: 0,
-        max: 5
+        max: 100
     },
     description: {type: String, required: true},
 });

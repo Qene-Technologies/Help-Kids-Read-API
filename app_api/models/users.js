@@ -21,8 +21,8 @@ var questionSchema = new mongoose.Schema({
 var userSchema = new mongoose.Schema({
   phone: {
     type: String,
+    required: true,
     unique: true,
-    required: true
   },
   name: {
     type: String,
@@ -56,7 +56,7 @@ userSchema.methods.generateJwt = function() {
 
   return jwt.sign({
     _id: this._id,
-    email: this.email,
+    phone: this.phone,
     name: this.name,
     exp: parseInt(expiry.getTime() / 1000),
   }, "this is the secret"); // DO NOT KEEP YOUR SECRET IN THE CODE!
