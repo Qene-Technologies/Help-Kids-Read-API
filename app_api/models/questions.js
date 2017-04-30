@@ -1,9 +1,15 @@
 var mongoose = require('mongoose');
 
 var questionSchema = mongoose.Schema({
-    book_title : {
-        type : String,
-        required : true
+    book : {
+       title : {
+            type : String,
+            required : true
+        },
+        id :  {
+            type : String,
+            required : true
+        }
     },
     question : {
         type : String,

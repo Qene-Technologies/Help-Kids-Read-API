@@ -26,9 +26,10 @@ addQuestion = (req, res) => {
                     added_by :{
                     user_id : req.params.userid
                     },
-                    book_title : book.title,
-                    book_id : book.bookid
-
+                    book : {
+                        title : book.title,
+                        id : req.params.bookid
+                    }
                 },(err, question) =>{
                     if(err){
                     console.log(err);
@@ -68,7 +69,18 @@ getAllQuestions = (req, res) => {
 }
 
 getQuestionsByBook = (req, res) =>{
+    if(req.params && req.params.bookid){
+        Question
+            .find({"book.id" : req.params.book_id})
+            .exec((err, questions)=>{
+                if(err){
+                    sendJSONresponse(res, 404, err);
+                    return;
+                }
 
+                sendJSONresponse(res, 200, questions);
+            })
+    }
 }
 
 getOneQuestion = (req, res) => {
