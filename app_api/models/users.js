@@ -19,7 +19,7 @@ var questionSchema = new mongoose.Schema({
 });
 
 var userSchema = new mongoose.Schema({
-  email: {
+  phone: {
     type: String,
     unique: true,
     required: true
